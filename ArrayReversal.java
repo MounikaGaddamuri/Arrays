@@ -1,6 +1,6 @@
-import java.util.*;
+import java.util.Scanner;
 
-public class MinAndMax {
+public class ArrayReversal {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the size of the array: ");
@@ -9,14 +9,17 @@ public class MinAndMax {
         System.out.println("Enter the array elements: ");
         for (int i = 0; i < array_size; i++)
             array[i] = input.nextInt();
-        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
-        for (int i = 0; i < array_size; i++) {
-            if (array[i] < min)
-                min = array[i];
-            if (array[i] > max)
-                max = array[i];
+
+        int start = 0, end = array_size - 1;
+        while (start <= end) {
+            int temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+
+            start++;
+            end--;
         }
-        System.out.println("Minimum element: " + min);
-        System.out.println("Maximum element: " + max);
+        for (int i = 0; i < array_size; i++)
+            System.out.print(array[i] + " ");
     }
 }
